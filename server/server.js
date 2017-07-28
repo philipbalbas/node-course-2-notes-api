@@ -11,6 +11,10 @@ const port = process.env.PORT || 3000
 
 app.use(bodyParser.json())
 
+app.get('/', (req, res) => {
+  res.send('This is a todo note app')
+})
+
 app.get('/todos', (req, res) => {
   Todo.find().then(
     todos => {
