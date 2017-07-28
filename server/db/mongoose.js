@@ -2,12 +2,12 @@ const mongoose = require('mongoose')
 
 mongoose.Promise = global.Promise
 
-mongoose.connect('mongodb://yves:yves@ds127063.mlab.com:27063/notes-api', {
-  useMongoClient: true
-})
+const MONGODB_URI = process.env.MONGODB_URI
+  ? 'mongodb://yves:yves@ds127063.mlab.com:27063/notes-api'
+  : 'mongodb://localhost:27017/TodoApp'
 
-// mongoose.connect('mongodb://localhost:27017/TodoApp', {
-//   useMongoClient: true
-// })
+mongoose.connect(MONGODB_URI, {
+  useMongoClient: true,
+})
 
 module.exports = { mongoose }
